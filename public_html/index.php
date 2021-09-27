@@ -6,10 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css">
 		<script type="module" src="script.js"></script>
-		<title>Temp Home</title>
+		<title>Nowicki Krzysztof</title>
 	</head>
 	<body style="background-color: black;">
 		<global-header></global-header>
 		<nav-card></nav-card>
+		<global-footer></global-footer>
 	</body>
 </html>
