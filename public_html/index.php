@@ -10,7 +10,10 @@
 	</head>
 	<body style="background-color: black;">
 		<global-header></global-header>
-		<nav-card></nav-card>
+		<nav-card content="about-me"></nav-card>
+		<nav-card content="career"></nav-card>
+		<nav-card content="articles"></nav-card>
+		<nav-card content="more"></nav-card>
 		<global-footer></global-footer>
 	</body>
 </html>
