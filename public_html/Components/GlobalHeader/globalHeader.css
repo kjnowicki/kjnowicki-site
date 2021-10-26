@@ -1,0 +1,8 @@
+global-header {
+    color:lightblue;
+    font-size: 1.5vh;
+    text-align: center;
+}
+global-header #header h1 {
+    letter-spacing: 1px;
+}

@@ -1,0 +1,15 @@
+/* nav-card */
+nav-card > * {
+    margin-left: 15px;
+}
+
+nav-card p {
+    color: white;
+    font-weight: bold;
+}
+
+nav-card span {
+    display: inline-block;
+    font-size: smaller;
+    color: lightblue;
+}
