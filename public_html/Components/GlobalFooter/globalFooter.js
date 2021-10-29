@@ -1,6 +1,7 @@
+import { router } from "../../router.js";
 import { CustomElement } from "../../CustomElement.js";
 
-const path = "Components/GlobalFooter/";
+const path = router() + "/Components/GlobalFooter/";
 const name = "globalFooter";
 const tag = "global-footer";
 

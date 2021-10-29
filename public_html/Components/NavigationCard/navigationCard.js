@@ -1,6 +1,7 @@
+import { router } from "../../router.js";
 import { CustomElement } from "../../CustomElement.js";
 
-const path = "Components/NavigationCard/";
+const path = router() + "/Components/NavigationCard/";
 const name = "navigationCard";
 const tag = "nav-card";
 
