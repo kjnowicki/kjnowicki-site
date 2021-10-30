@@ -1,0 +1,15 @@
+about-me.header=ABOUT ME 💬
+about-me.description=Nothing compared to in real life impression, but that's something. 😀
+about-me.url=/me/about-me
+
+career.header=CAREER 👔
+career.description=Path. Current and previous experience. Objectives and goals.
+career.url=/me/career
+
+articles.header=ARTICLES 📒 [nothing here yet]
+articles.description=When I feel clever enough to share my thoughts. 👓
+articles.url=/me/articles
+
+more.header=MORE 👀
+more.description=Projects, recommendations, studies and other...
+more.url=/me/more
