@@ -12,7 +12,7 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<career></career>
+	<my-career></my-career>
 	<global-footer></global-footer>
 </body>
 

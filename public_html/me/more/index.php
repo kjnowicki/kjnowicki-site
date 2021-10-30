@@ -12,7 +12,7 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<more></more>
+	<more-content></more-content>
 	<global-footer></global-footer>
 </body>
 

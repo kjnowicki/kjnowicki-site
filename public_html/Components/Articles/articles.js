@@ -3,7 +3,7 @@ import { CustomElement } from "../../CustomElement.js";
 
 const path = router() + "/Components/Articles/";
 const name = "articles";
-const tag = "articles";
+const tag = "all-articles";
 
 class Articles extends CustomElement {
     constructor() {
