@@ -6,3 +6,12 @@ global-header {
 global-header #header h1 {
     letter-spacing: 1px;
 }
+
+global-header a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+global-header a:visited {
+    color:inherit;
+}
