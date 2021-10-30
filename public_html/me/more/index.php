@@ -12,7 +12,9 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<more-content></more-content>
+	<div>
+		<a url="/other/gv">GV link-tree</a>
+	</div>
 	<global-footer></global-footer>
 </body>
 
