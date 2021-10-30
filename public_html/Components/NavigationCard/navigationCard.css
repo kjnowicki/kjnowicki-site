@@ -12,3 +12,13 @@ nav-card span {
     font-size: smaller;
     color: lightblue;
 }
+
+nav-card a {
+    text-decoration: none;
+    cursor: pointer;
+    color:inherit;
+}
+
+nav-card a:visited {
+    color:inherit;
+}
