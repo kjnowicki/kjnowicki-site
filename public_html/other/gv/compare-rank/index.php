@@ -118,29 +118,31 @@ if ($_SESSION['compare-rank_auth'] != true) {
                         if (strlen($user) < 1) break;
                         if (trim($user) == $_SESSION['name']) {
                             if ($i == 0) $_SESSION['admin'] = true;
-                            //echo '<span>> YOU: ' . $user . "</span><br>";
                             $i++;
                             continue;
                         }
                         $i++;
-                        //echo '<span>> ' . $user . "</span><br>";
                     }
-                    //echo '<br><br>';
                 }
 
                 function join_session()
                 {
                     $user_name = trim($_POST['name']);
-                    $users_lines = file($_POST['session_code'] . "/users.txt");
+                    if(isset($_SESSION['code'])) {
+                        $session = $_SESSION['code'];
+                    } else {
+                        $session = $_POST['session_code'];
+                    }
+                    $users_lines = file($session . "/users.txt");
                     $i = 0;
                     foreach ($users_lines as $user) {
                         if (trim($user) == $user_name || trim($user) == $user_name . $i) $i++;
                     }
                     if ($i > 0) $user_name = $user_name . $i;
-                    $users_file = fopen($_POST['session_code'] . "/users.txt", "a") or die("Unable to open file!");
+                    $users_file = fopen($session . "/users.txt", "a") or die("Unable to open file!");
                     fwrite($users_file, $user_name . PHP_EOL);
                     $_SESSION['name'] = $user_name;
-                    $_SESSION['code'] = $_POST['session_code'];
+                    $_SESSION['code'] = $session;
                     fflush($users_file);
                     fclose($users_file);
                 }
