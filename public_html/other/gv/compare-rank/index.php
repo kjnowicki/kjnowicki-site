@@ -67,8 +67,10 @@ if ($_SESSION['compare-rank_auth'] != true) {
             <form id="leave-form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input type="submit" name="submit" value="Leave session" id="leave-session">
             </form>
+            <br><br>
             <div>
                 <input type="button" value="Refresh" onClick="window.location.reload(true)"><br>
+                Current lobby: <div id="users">Loading...</div>
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($_POST['submit'] == 'Create session'&& !isset($_SESSION['code'])) {
@@ -108,7 +110,7 @@ if ($_SESSION['compare-rank_auth'] != true) {
                 {
                     echo 'Your session code: ' . $_SESSION['code'] . '<br><br>';
                     $users_file = fopen($_SESSION['code'] . "/users.txt", "r") or die("Unable to open file!");
-                    echo 'Current lobby: <br>';
+                    //echo 'Current lobby: <br>';
                     $i = 0;
                     $_SESSION['admin'] = false;
                     while (!feof($users_file)) {
@@ -116,14 +118,14 @@ if ($_SESSION['compare-rank_auth'] != true) {
                         if (strlen($user) < 1) break;
                         if (trim($user) == $_SESSION['name']) {
                             if ($i == 0) $_SESSION['admin'] = true;
-                            echo '<span>> YOU: ' . $user . "</span><br>";
+                            //echo '<span>> YOU: ' . $user . "</span><br>";
                             $i++;
                             continue;
                         }
                         $i++;
-                        echo '<span>> ' . $user . "</span><br>";
+                        //echo '<span>> ' . $user . "</span><br>";
                     }
-                    echo '<br><br>';
+                    //echo '<br><br>';
                 }
 
                 function join_session()
@@ -196,6 +198,16 @@ if ($_SESSION['compare-rank_auth'] != true) {
                             if (match) {
                                 clearInterval(check_command);
                             }
+                        }, 5000);
+                        var users = "";
+                        var check_user = setInterval(async () => {
+                            await fetch(session_code + '/users.txt')
+                                .then(async response => {
+                                    if (response.ok) {
+                                        users = await response.text();
+                                    }
+                                });
+                            document.querySelector("#users").innerHTML = users;
                         }, 1000);
                     }
                 </script>
