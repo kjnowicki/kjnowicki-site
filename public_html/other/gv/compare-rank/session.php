@@ -76,6 +76,36 @@ if ($_SESSION['compare-rank_auth'] != true) {
                     }
                 });
         </script>
+        
+        <script>
+            function sortByComparison(undiv_array, k = 5, l_array = [], r_array = [], pivot = null) {
+                if(undiv_array.length == 0) return [];
+                if(undiv_array.length <= k && l_array.length == 0 && r_array.length == 0) return getItSorted(undiv_array);
+                if(pivot == null) {
+                    if(undiv_array.length == 1) return undiv_array;
+                    var k_array =  undiv_array.slice(0,k);
+                    undiv_array = undiv_array.slice(k);
+                } else {
+                    var k_array = [pivot].concat(undiv_array.slice(0,k-1));
+                    undiv_array = undiv_array.slice(k-1);
+                }
+                var k_array_sorted = getItSorted(k_array);
+                var pivot_index = Math.floor(k_array.length / 2);
+                if(pivot == null) {
+                    pivot = k_array_sorted[pivot_index];
+                } else {
+                    pivot_index = k_array_sorted.findIndex(n => n == pivot);
+                }
+                l_array = l_array.concat(k_array_sorted.slice(0, pivot_index));
+                r_array = r_array.concat(k_array_sorted.slice(pivot_index + 1));
+                if(undiv_array.length > 0) return sortByComparison(undiv_array, k, l_array, r_array, pivot);
+                else return sortByComparison(l_array, k).concat(pivot).concat(sortByComparison(r_array, k));
+            }
+
+            function getItSorted(array){
+                return array.sort(function(a, b){return a-b});
+            }
+        </script>
     </div>
 </body>
 
