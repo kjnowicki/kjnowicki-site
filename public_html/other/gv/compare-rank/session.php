@@ -54,7 +54,27 @@ if ($_SESSION['compare-rank_auth'] != true) {
         }
         ?>
         <script>
-            
+            var entries = [];
+            var session_code = '<?php echo $_SESSION['code'] ?>';
+            fetch(session_code + '/data.txt')
+                .then(async response => {
+                    if (response.ok) {
+                        return await response.text();
+                    }
+                })
+                .then((text) => {
+                    let pom_entries = text.split("\n");
+                    let offset = 1;
+                    for (let index = 1; index < pom_entries.length; index++) {
+                        let entry = pom_entries[index];
+                        if(entry.length > 0){
+                            entries[index - offset] = entry.split(",");
+                        }
+                        else {
+                            offset++;
+                        }
+                    }
+                });
         </script>
     </div>
 </body>
