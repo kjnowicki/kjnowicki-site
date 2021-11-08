@@ -20,23 +20,28 @@ function nextSorting(k = 5, addPivot = false) {
     sortingArrays[currentSortingArrayIndex]["array"] = sortingArrays[currentSortingArrayIndex]["array"].slice(k);
 }
 
-function nextSortingLevel() {
-    let side = sortingArrays[currentSortingArrayIndex]["parentSide"];
-    if (side == "l") {
-        currentSortingArrayIndex = currentSortingArrayIndex + 1;
-        nextSorting();
-    } else if (side == "r") {
-        if (currentSortingArrayIndex == 0) endSorting();
-        else {
-            currentSortingArrayIndex = sortingArrays[currentSortingArrayIndex]["parentNo"]
-            nextSorting();
-        }
+function getToTheHighestLeftSide() {
+    while (currentSortingArrayIndex > 0) {
+        if (sortingArrays[currentSortingArrayIndex]["parentSide"] == "l") return true;
+        currentSortingArrayIndex = (currentSortingArrayIndex - 2) / 2;
     }
+    return false;
+}
+
+function nextSortingLevel() {
+    if (!getToTheHighestLeftSide()) {
+        endSorting();
+        return;
+    }
+    sortedEntriesIds = sortedEntriesIds.concat(sortingArrays[sortingArrays[currentSortingArrayIndex]["parentNo"]]["pivot"]);
+    currentSortingArrayIndex++;
+    nextSorting();
 }
 
 function endSorting() {
+    clearContent();
     console.log("Finished!");
-    //console.log("Sorted entries ids: " + sortingArrays[0]["lArray"].concat(sortingArrays[0]["pivot"]).concat(sortingArrays[0]["rArray"]));
+    console.log(sortedEntriesIds.map(id => entries[id]).map(entry => entry[0]));
 }
 
 function submitSort() {
@@ -46,16 +51,12 @@ function submitSort() {
     let sortingPivot = currentSortingArray["pivot"];
     let sortingParentNo = currentSortingArray["parentNo"];
     let sortingParentSide = currentSortingArray["parentSide"];
-
     let sortedArray = readSorted();
-    console.log("Sorting Arrays:");
-    console.log(sortingArrays)
-    console.log("Sorted Entries Ids:");
-    console.log(sortedEntriesIds)
 
     if (sortingLArray == undefined) sortingLArray = [];
     if (sortingRArray == undefined) sortingRArray = [];
     if (currentSortingArray["array"].length == 0 && sortingLArray.length == 0 && sortingRArray.length == 0 && sortingPivot == undefined) {
+        // sortedEntriesIds = sortedEntriesIds.concat(sortedArray).concat(sortingArrays[sortingParentNo]["pivot"]);
         if (sortingParentSide == "l") sortedEntriesIds = sortedEntriesIds.concat(sortedArray).concat(sortingArrays[sortingParentNo]["pivot"]);
         else sortedEntriesIds = sortedEntriesIds.concat(sortedArray);
         nextSortingLevel();
@@ -84,7 +85,7 @@ function submitSort() {
         sortingArrays[currentSortingArrayIndex * 2 + 1] = { "array": sortingLArray, "parentNo": currentSortingArrayIndex, "parentSide": "l" };
         sortingArrays[currentSortingArrayIndex * 2 + 2] = { "array": sortingRArray, "parentNo": currentSortingArrayIndex, "parentSide": "r" };
         if (sortingLArray.length < 2 || lSorted) {
-            sortedEntriesIds = sortedEntriesIds.concat(sortingLArray).concat(sortingArrays[currentSortingArrayIndex]["pivot"]);
+            sortedEntriesIds = sortedEntriesIds.concat(sortingLArray).concat(sortingPivot);
             if (sortingRArray.length < 2 || rSorted) {
                 sortedEntriesIds = sortedEntriesIds.concat(sortingRArray);
                 nextSortingLevel();
