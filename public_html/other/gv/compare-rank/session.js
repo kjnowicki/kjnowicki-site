@@ -56,9 +56,7 @@ function submitSort() {
     if (sortingLArray == undefined) sortingLArray = [];
     if (sortingRArray == undefined) sortingRArray = [];
     if (currentSortingArray["array"].length == 0 && sortingLArray.length == 0 && sortingRArray.length == 0 && sortingPivot == undefined) {
-        // sortedEntriesIds = sortedEntriesIds.concat(sortedArray).concat(sortingArrays[sortingParentNo]["pivot"]);
-        if (sortingParentSide == "l") sortedEntriesIds = sortedEntriesIds.concat(sortedArray).concat(sortingArrays[sortingParentNo]["pivot"]);
-        else sortedEntriesIds = sortedEntriesIds.concat(sortedArray);
+        sortedEntriesIds = sortedEntriesIds.concat(sortedArray);
         nextSortingLevel();
         return;
     }
