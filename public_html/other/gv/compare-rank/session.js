@@ -173,6 +173,7 @@ function onWindowLoad() {
             buttons.forEach(button => {
                 button.addEventListener("click", () => {
                     let entryId = button.parentElement.parentElement.getAttribute("id");
+                    if (button.parentElement.parentElement.getAttribute("entry-id") == "-1") return;
                     entryId = Number(entryId[entryId.length - 1]);
                     let otherEntryId;
                     switch (button.className) {
@@ -183,10 +184,10 @@ function onWindowLoad() {
                             otherEntryId = 1;
                             break;
                         case "right":
-                            otherEntryId = Math.min(entryId + 1, 5);
+                            otherEntryId = Math.min(entryId + 1, document.querySelectorAll(".entry:not([entry-id='-1'])").length);
                             break;
                         case "right-end":
-                            otherEntryId = 5;
+                            otherEntryId = document.querySelectorAll(".entry:not([entry-id='-1'])").length;
                             break;
                         default:
                             break;
