@@ -110,7 +110,6 @@ if ($_SESSION['compare-rank_auth'] != true) {
                 {
                     echo 'Your session code: ' . $_SESSION['code'] . '<br><br>';
                     $users_file = fopen($_SESSION['code'] . "/users.txt", "r") or die("Unable to open file!");
-                    //echo 'Current lobby: <br>';
                     $i = 0;
                     $_SESSION['admin'] = false;
                     while (!feof($users_file)) {
