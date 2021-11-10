@@ -34,6 +34,7 @@ if ($_SESSION['compare-rank_auth'] != true) {
     <script type="module" src="script.js"></script>
     <script src="session.js"></script>
     <script> window.onload = onWindowLoad()</script>
+    <script> sessionStorage.setItem('sessionId', '<?php echo $_SESSION['code']; ?>')</script>
     <title>Ranking Session - <?php echo $_SESSION['code']; ?></title>
 </head>
 

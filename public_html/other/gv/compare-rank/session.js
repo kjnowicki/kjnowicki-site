@@ -3,8 +3,24 @@ var currentSortingArrayIndex = 0;
 var sortedEntriesIds = [];
 
 function startSorting() {
-    sortingArrays[currentSortingArrayIndex] = { "array": [...Array(entries.length).keys()] };
+    if (sessionStorage.getItem("sortingArrays") == null) {
+        sortingArrays[currentSortingArrayIndex] = { "array": [...Array(entries.length).keys()] };
+    } else {
+        retrieveSession();
+    }
     nextSorting();
+}
+
+function updateSession() {
+    sessionStorage.setItem("sortingArrays", JSON.stringify(sortingArrays));
+    sessionStorage.setItem("sortedEntriesIds", JSON.stringify(sortedEntriesIds));
+    sessionStorage.setItem("currentSortingArrayIndex", currentSortingArrayIndex);
+}
+
+function retrieveSession() {
+    sortingArrays = JSON.parse(sessionStorage.getItem("sortingArrays"));
+    if (sessionStorage.getItem("sortedEntriesIds").length > 0) sortedEntriesIds = JSON.parse(sessionStorage.getItem("sortedEntriesIds"));
+    currentSortingArrayIndex = sessionStorage.getItem("currentSortingArrayIndex");
 }
 
 function nextSorting(k = 5, addPivot = false) {
@@ -40,8 +56,18 @@ function nextSortingLevel() {
 
 function endSorting() {
     clearContent();
-    console.log("Finished!");
-    console.log(sortedEntriesIds.map(id => entries[id]).map(entry => entry[0]));
+    const params = {
+        sortedEntriesIds: JSON.stringify(sortedEntriesIds),
+        sessionId: sessionStorage.getItem('sessionId')
+    };
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(params)
+    };
+    fetch('.submit.php', options)
+        .then(() => {
+            window.location.href = './summary.php';
+        });
 }
 
 function submitSort() {
@@ -49,8 +75,6 @@ function submitSort() {
     let sortingLArray = currentSortingArray["lArray"];
     let sortingRArray = currentSortingArray["rArray"];
     let sortingPivot = currentSortingArray["pivot"];
-    let sortingParentNo = currentSortingArray["parentNo"];
-    let sortingParentSide = currentSortingArray["parentSide"];
     let sortedArray = readSorted();
 
     if (sortingLArray == undefined) sortingLArray = [];
@@ -58,6 +82,7 @@ function submitSort() {
     if (currentSortingArray["array"].length == 0 && sortingLArray.length == 0 && sortingRArray.length == 0 && sortingPivot == undefined) {
         sortedEntriesIds = sortedEntriesIds.concat(sortedArray);
         nextSortingLevel();
+        updateSession();
         return;
     }
     if (sortingPivot == undefined) {
@@ -87,6 +112,7 @@ function submitSort() {
             if (sortingRArray.length < 2 || rSorted) {
                 sortedEntriesIds = sortedEntriesIds.concat(sortingRArray);
                 nextSortingLevel();
+                updateSession();
                 return;
             } else {
                 currentSortingArrayIndex = currentSortingArrayIndex * 2 + 2;
@@ -99,6 +125,7 @@ function submitSort() {
     } else {
         nextSorting(5, true);
     }
+    updateSession();
 }
 
 function clearContent() {
