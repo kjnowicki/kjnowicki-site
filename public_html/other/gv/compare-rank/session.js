@@ -4,7 +4,12 @@ var sortedEntriesIds = [];
 
 function startSorting() {
     if (sessionStorage.getItem("sortingArrays") == null) {
-        sortingArrays[currentSortingArrayIndex] = { "array": [...Array(entries.length).keys()] };
+        let startingArray = [...Array(entries.length).keys()];
+        let randomStartingArray = [];
+        while (startingArray.length > 0) {
+            randomStartingArray.push(startingArray.splice(Math.random() * startingArray.length, 1));
+        }
+        sortingArrays[currentSortingArrayIndex] = { "array": randomStartingArray };
     } else {
         retrieveSession();
     }
