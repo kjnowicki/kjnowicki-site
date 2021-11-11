@@ -14,7 +14,7 @@ if ($_SESSION['compare-rank_auth'] != true) {
 
     $pass = $_SERVER['PHP_AUTH_PW'];
     // If we get here, username was provided. Check password.
-    if (strlen($pass) > 4 && str_contains('compare-rank', $pass)) {
+    if (!(strlen($pass) > 4 && str_contains('compare-rank', $pass))) {
         echo '<p>Access denied! You do not know the password.</p>';
         header('WWW-Authenticate: Basic realm="My Website"');
         header('HTTP/1.0 401 Unauthorized');

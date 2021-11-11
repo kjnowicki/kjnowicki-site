@@ -5,8 +5,8 @@ if (!isset($_SESSION['code'])) header('Location: ' . $_SERVER['DOCUMENT_ROOT']);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION[$_SESSION['code']]['finished'])) {
     $_SESSION[$_SESSION['code']]['finished'] = true;
     $results_file = fopen($_SESSION['code'] . "/results.txt", "a") or die("Unable to open file!");
-    $ids = $_POST['sortedEntriesIds'];
-    $data = $_SESSION['name'] . ", " . $ids . PHP_EOL;
+    $ids = implode(".", json_decode($_POST['sortedEntriesIds'],true));
+    $data = $_SESSION['name'] . "," . $ids . PHP_EOL;
     fwrite($results_file, $data);
     fclose($results_file);
 }
