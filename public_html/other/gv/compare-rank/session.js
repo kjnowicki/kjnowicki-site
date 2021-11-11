@@ -61,18 +61,22 @@ function nextSortingLevel() {
 
 function endSorting() {
     clearContent();
-    const params = {
-        sortedEntriesIds: JSON.stringify(sortedEntriesIds),
+    const data = {
+        sortedEntriesIds: JSON.stringify(sortedEntriesIds.map(id => Number(id))),
         sessionId: sessionStorage.getItem('sessionId')
     };
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(params)
-    };
-    fetch('.submit.php', options)
-        .then(() => {
-            window.location.href = './summary.php';
-        });
+    let formData = new FormData();
+    for (let param in data) {
+        formData.append(param, data[param]);
+    }
+    let request = new Request('./submit.php', {
+        method: "POST",
+        body: formData
+    });
+
+    fetch(request).then(() => {
+        window.location.href = './summary.php';
+    });;
 }
 
 function submitSort() {
