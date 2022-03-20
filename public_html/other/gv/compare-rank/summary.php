@@ -42,13 +42,13 @@ if ($_SESSION['compare-rank_auth'] != true) {
         th, td {
             padding: 5px;
         }
-    </style>        
+    </style>
 </head>
 
 <body style="background-color: black;">
     <table>
         <tbody id="stat_table">
-            <tr><th>Lp.</th><th>Who</th><th>Scored</th><th>Tier</th></tr>
+            <tr><th>Lp.</th><th>Who</th><th>Scored</th><th>Tier</th><th>Your rank</th></tr>
         </tbody>
         
     </table>
@@ -118,13 +118,17 @@ if ($_SESSION['compare-rank_auth'] != true) {
         let modifier = stat_array[0][1]["places"].length;
         for(let i = 0; i < stat_array.length; i++){
             const node = document.createElement("tr");
+
             const lp = document.createElement("td");
             lp.appendChild(document.createTextNode(i+1));
+
             const who = document.createElement("td");
             who.appendChild(document.createTextNode(data[stat_array[i][0]]["name"]));
+
             let score = (1 - stat_array[i][1]["score"]/((stat_array.length - 1) * modifier)).toFixed(2);
             const scored = document.createElement("td");
             scored.appendChild(document.createTextNode(score));
+
             let tier_mark = "S"
             if(score <= 0.1) tier_mark = "D";
             else if(score <= 0.3) tier_mark = "C";
@@ -132,10 +136,16 @@ if ($_SESSION['compare-rank_auth'] != true) {
             else if(score <= 0.9) tier_mark = "A";
             const tier = document.createElement("td");
             tier.appendChild(document.createTextNode(tier_mark));
+
+            let y_score = JSON.parse(sessionStorage.sortedEntriesIds).findIndex(x => x == stat_array[i][0]) + 1;
+            const your_score = document.createElement("td");
+            your_score.appendChild(document.createTextNode(y_score));
+
             node.appendChild(lp);
             node.appendChild(who);
             node.appendChild(scored);
             node.appendChild(tier);
+            node.appendChild(your_score);
             document.querySelector("#stat_table").appendChild(node);
         }
 
