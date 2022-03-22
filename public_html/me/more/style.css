@@ -1,0 +1,8 @@
+#content a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#content a:visited {
+    color: inherit;
+}

@@ -12,7 +12,9 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<my-career></my-career>
+	<div>
+		History of my work will be here
+	</div>
 	<global-footer></global-footer>
 </body>
 

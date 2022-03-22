@@ -1,4 +1,5 @@
 import { router } from "../../router.js";
+import { linker } from "../../linker.js";
 import { CustomElement } from "../../CustomElement.js";
 
 const path = router() + "/Components/NavigationCard/";
@@ -9,23 +10,8 @@ class NavigationCard extends CustomElement {
     constructor() {
         super(path, name);
         window.onload = () => {
-            this.linking();
+            linker("nav-card a");
         }
-    }
-
-    linking = function () {
-        var checkEl = setInterval(() => {
-            let elements = document.querySelectorAll("nav-card a");
-            if(elements.length > 0) {
-                elements.forEach(element => {
-                    let url = router() + element.getAttribute('url');
-                    element.addEventListener('click',() => {
-                        window.location.href = url;
-                    });
-                });
-                clearInterval(checkEl);
-            }
-        }, 100)
     }
 }
 

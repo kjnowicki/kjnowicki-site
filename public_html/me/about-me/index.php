@@ -12,7 +12,9 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<about-me></about-me>
+	<div>
+		I'm a very cool person. At least that's what I've been thinking about myself for the last 5 minutes so I hope that's true.
+	</div>
 	<global-footer></global-footer>
 </body>
 

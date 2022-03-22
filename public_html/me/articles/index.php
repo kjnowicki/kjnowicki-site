@@ -12,7 +12,9 @@
 
 <body style="background-color: black;">
 	<global-header></global-header>
-	<all-articles></all-articles>
+	<div>
+		Some articles will show up here some time.
+	</div>
 	<global-footer></global-footer>
 </body>
 
