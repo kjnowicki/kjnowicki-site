@@ -1,6 +1,6 @@
 global-footer {
     color:lightblue;
-    font-size: min(2.5vh, 3.5vw);
+    font-size: min(1.2vh, 2vw);
     text-align: center;
     position: fixed;
     bottom: 0%;
