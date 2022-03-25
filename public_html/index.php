@@ -37,7 +37,7 @@
 						</tr>
 						<tr>
 							<td>
-								Also checkout my team for private projects - <a href='https://www.gdev.pl' target="_blank">GDev</a>
+								Also check out my team for private projects - <a href='https://www.gdev.pl' target="_blank">GDev</a>
 							</td>
 						</tr>
 					</tbody>
