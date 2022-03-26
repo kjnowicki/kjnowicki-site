@@ -26,7 +26,8 @@
 					<tbody>
 						<tr>
 							<td>
-								Ranker Party - Rating stuff along with other people in shared session.
+								<b>Ranker Party</b> - Rating stuff along with other people in shared session.<br>
+								<i>Currently unavailable for public use.</i>
 							</td>
 						</tr>
 						<tr>
@@ -74,15 +75,24 @@
 					<tbody>
 						<tr>
 							<td>
-								I love everyone who is willing to make individual sacrifice for a common good. Thank you very much.
+								Love everyone's effort against wars and injustice in the world.
 							</td>
 						</tr>
 						<tr>
 							<td>
-								Small software that helps:<br>
-								- Notepad++<br>
-								- TurtoiseGit<br>
-								- PuTTY<br>
+								Must watch movies:
+								<ul>
+									<li><b>LaLa Land</b> - Amazingly written musical about dreams and love.</li>
+									<li><b>Jojo Rabit</b> - Brutal history contrasted with absurd humor. Perfect satire.</li>
+								</ul>
+							</td>
+						</tr>
+							<td>
+								YT Channels<br>
+								:Comedy:<br>
+								- <a href="https://www.youtube.com/c/MakingShorts">Joel Javer</a><br>
+								- <a href="https://www.youtube.com/c/VivaLaDirtLeague">Viva La Dirt League</a><br>
+								- <a href="https://www.youtube.com/c/GFDarwinyt">G.F. Darwin</a><br>
 							</td>
 						</tr>
 					</tbody>
