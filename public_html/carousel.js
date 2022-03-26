@@ -17,6 +17,7 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
+var idle = true;
 var rotate_enabled = false;
 var previous_position = 0;
 var currently_updating = false;
@@ -24,6 +25,7 @@ var adjusting_timeout = null;
 var current_angle = 0;
 
 const rotate_carousel_on_click = (element) => {
+    idle = false;
     if(rotate_enabled) return;
     if(adjusting_timeout != null) clearTimeout(adjusting_timeout);
     let css_rotateY_val = Number(css(element.parentElement).join().match(/rotateY\(([-0-9]{1,3})deg\)/)[1]);
@@ -53,6 +55,7 @@ document.onmouseleave = () => {
 }
 
 const rotating_carousel = (x) => {
+    idle = false;
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
     let angle = current_angle - 180*relative_dif*0.45;
@@ -86,3 +89,19 @@ document.ontouchmove = (e) => {
         rotating_carousel(touch.clientX)
     }
 }
+
+var idle_inter = setInterval(()=> {
+    if(idle) {
+        let carousel_el = document.querySelector("#carousel");
+        if(idle) carousel_el.style.transform = `rotateY(1deg)`;
+        setTimeout(() => {
+            if(idle) carousel_el.style.transform = `rotateY(-1deg)`;
+            setTimeout(() => {
+                if(idle) carousel_el.style.transform = `rotateY(0deg)`;
+            }, 600);
+        }, 600);
+    }
+    else {
+        clearInterval(idle_inter);
+    }
+}, 10000);
