@@ -58,8 +58,6 @@ document.ontouchend = () => {
 }
 
 const rotating_carousel = (x) => {
-    click = false;
-    idle = false;
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
     let angle = current_angle - 180*relative_dif*0.45;
@@ -67,6 +65,8 @@ const rotating_carousel = (x) => {
     if(Math.abs(angle - current_angle) < 6) return;
     clearTimeout(adjusting_timeout);
     currently_updating = true;
+    click = false;
+    idle = false;
     setTimeout(() => {
         carousel_el.style.transform = `rotateY(${angle}deg)`;
         current_angle = angle;
