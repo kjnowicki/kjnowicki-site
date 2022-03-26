@@ -1,9 +1,12 @@
 global-header {
     color:lightblue;
-    font-size: 1.5vh;
+    font-size: min(1.5vh, 2.5vw);
     text-align: center;
+    display: block;
 }
 global-header #header h1 {
     letter-spacing: 1px;
     cursor: pointer;
+    margin: 0;
+    padding: 1%;
 }
