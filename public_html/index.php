@@ -18,7 +18,7 @@
 		<div id="global-content" style="display:none;">
 			<div id="carousel">
 				<table class="nav-c">
-					<thead  onclick="rotate_carousel_on_click(this);">
+					<thead  onclick="rotate_carousel_on_click(this);" onmousedown="update_click();">
 						<tr>
 							<th>💾 My Apps 💾</th>
 						</tr>
@@ -37,7 +37,7 @@
 					</tbody>
 				</table>
 				<table class="nav-c">
-					<thead  onclick="rotate_carousel_on_click(this);">
+					<thead  onclick="rotate_carousel_on_click(this);" onmousedown="update_click();">
 						<tr>
 							<th>About me ^^</th>
 						</tr>
@@ -66,7 +66,7 @@
 					</tbody>
 				</table>
 				<table class="nav-c">
-					<thead onclick="rotate_carousel_on_click(this);">
+					<thead onclick="rotate_carousel_on_click(this);" onmousedown="update_click();">
 						<tr>
 							<th>Endorsements</th>
 						</tr>

@@ -17,6 +17,7 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
+var click = false;
 var idle = true;
 var rotate_enabled = false;
 var previous_position = 0;
@@ -25,7 +26,7 @@ var adjusting_timeout = null;
 var current_angle = 0;
 
 const rotate_carousel_on_click = (element) => {
-    if(!rotate_enabled && !currently_updating){
+    if(!rotate_enabled && !currently_updating && click){
         idle = false;
         if(rotate_enabled) return;
         if(adjusting_timeout != null) clearTimeout(adjusting_timeout);
@@ -45,17 +46,19 @@ const attach_carousel_listeners = () => {
         rotate_enabled = true;
     }
 }
+const update_click = () => {
+    click = true;
+}
 
 document.onmouseup = () => {
-    setTimeout(() => {
-        rotate_enabled = false;
-    },5);
+    rotate_enabled = false;
 }
 document.ontouchend = () => {
     rotate_enabled = false;
 }
 
 const rotating_carousel = (x) => {
+    click = false;
     idle = false;
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
