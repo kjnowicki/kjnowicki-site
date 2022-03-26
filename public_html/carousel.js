@@ -25,6 +25,7 @@ var current_angle = 0;
 
 const rotate_carousel_on_click = (element) => {
     if(rotate_enabled) return;
+    if(adjusting_timeout != null) clearTimeout(adjusting_timeout);
     let css_rotateY_val = Number(css(element.parentElement).join().match(/rotateY\(([-0-9]{1,3})deg\)/)[1]);
     document.querySelector("#carousel").style.transform = `rotateY(${-css_rotateY_val}deg)`;
     current_angle = -css_rotateY_val;
