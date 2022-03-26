@@ -1,11 +1,12 @@
 html, body {
   overscroll-behavior-inline: none;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 body {
     margin: 0;
     color: white;
-    overflow-x: hidden;
 }
 html {
   -webkit-tap-highlight-color: transparent;
