@@ -25,12 +25,14 @@ var adjusting_timeout = null;
 var current_angle = 0;
 
 const rotate_carousel_on_click = (element) => {
-    idle = false;
-    if(rotate_enabled) return;
-    if(adjusting_timeout != null) clearTimeout(adjusting_timeout);
-    let css_rotateY_val = Number(css(element.parentElement).join().match(/rotateY\(([-0-9]{1,3})deg\)/)[1]);
-    document.querySelector("#carousel").style.transform = `rotateY(${-css_rotateY_val}deg)`;
-    current_angle = -css_rotateY_val;
+    if(!rotate_enabled && !currently_updating){
+        idle = false;
+        if(rotate_enabled) return;
+        if(adjusting_timeout != null) clearTimeout(adjusting_timeout);
+        let css_rotateY_val = Number(css(element.parentElement).join().match(/rotateY\(([-0-9]{1,3})deg\)/)[1]);
+        document.querySelector("#carousel").style.transform = `rotateY(${-css_rotateY_val}deg)`;
+        current_angle = -css_rotateY_val;
+    }
 }
 const attach_carousel_listeners = () => {
     let el = document.getElementById("carousel");
@@ -45,12 +47,11 @@ const attach_carousel_listeners = () => {
 }
 
 document.onmouseup = () => {
-    rotate_enabled = false;
+    setTimeout(() => {
+        rotate_enabled = false;
+    },5);
 }
 document.ontouchend = () => {
-    rotate_enabled = false;
-}
-document.onmouseleave = () => {
     rotate_enabled = false;
 }
 
