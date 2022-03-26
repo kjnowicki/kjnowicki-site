@@ -47,7 +47,7 @@ html {
   transform-style: preserve-3d;
   height: 100%;
   width: 100%;
-  transition: transform 0.7s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  transition: transform 0.3s ease-out;
   transform: rotateY(0deg);
   cursor: grab;
   user-select: none;

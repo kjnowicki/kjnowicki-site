@@ -53,16 +53,12 @@ const update_click = () => {
 document.onmouseup = () => {
     rotate_enabled = false;
 }
-document.ontouchend = () => {
-    rotate_enabled = false;
-}
 
 const rotating_carousel = (x) => {
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
     let angle = current_angle - 180*relative_dif*0.45;
-    angle = Math.round(angle/6) * 6;
-    if(Math.abs(angle - current_angle) < 6) return;
+    if(Math.abs(angle - current_angle) < 2) return;
     clearTimeout(adjusting_timeout);
     currently_updating = true;
     click = false;
