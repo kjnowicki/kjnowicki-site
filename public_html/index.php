@@ -11,20 +11,14 @@
 
 		<link rel="stylesheet" href="style.css">
 		<script type="module" src="script.js"></script>
+		<script src="carousel.js"></script>
 	</head>
 	<body style="background-color: black;">
 		<global-header></global-header>
 		<div id="global-content" style="display:none;">
-			<table id="nav-s">
-				<tr>
-					<td>My Apps</td>
-					<td>About me</td>
-					<td>Endorsments</td>
-				</tr>
-			</table>
 			<div id="carousel">
 				<table class="nav-c">
-					<thead>
+					<thead  onclick="rotate_carousel_on_click(this);">
 						<tr>
 							<th>My Apps 💿</th>
 						</tr>
@@ -43,7 +37,7 @@
 					</tbody>
 				</table>
 				<table class="nav-c">
-					<thead>
+					<thead  onclick="rotate_carousel_on_click(this);">
 						<tr>
 							<th>About me ^^</th>
 						</tr>
@@ -72,7 +66,7 @@
 					</tbody>
 				</table>
 				<table class="nav-c">
-					<thead>
+					<thead onclick="rotate_carousel_on_click(this);">
 						<tr>
 							<th>Endorsments 💖</th>
 						</tr>
@@ -94,6 +88,9 @@
 					</tbody>
 				</table>
 			</div>
+			<script type="text/javascript">
+				attach_carousel_listeners();
+			</script>
 		</div>
 		<global-footer></global-footer>
 	</body>
