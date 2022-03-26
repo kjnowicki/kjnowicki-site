@@ -20,7 +20,7 @@
 				<table class="nav-c">
 					<thead  onclick="rotate_carousel_on_click(this);" onmousedown="update_click();">
 						<tr>
-							<th>💾 My Apps 💾</th>
+							<th>My Projects</th>
 						</tr>
 					</thead>
 					<tbody>

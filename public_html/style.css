@@ -1,5 +1,6 @@
 html, body {
   overscroll-behavior-inline: none;
+  height: 100%;
 }
 body {
     margin: 0;
@@ -7,7 +8,6 @@ body {
     overflow-x: hidden;
 }
 html {
-  min-height: 100%;
   -webkit-tap-highlight-color: transparent;
 }
 ::-webkit-scrollbar {
@@ -141,7 +141,7 @@ html {
   background-color: rgba(0,0,0,0.1);
 }
 .nav-c:nth-child(1) th::before {
-  content: "💾 My Apps 💾"
+  content: "My Projects"
 }
 .nav-c:nth-child(1) {
   transform: translate(-50%, -50%) rotateY(-55deg) translateZ(max(40vw,30vh)) perspective(2000px);
