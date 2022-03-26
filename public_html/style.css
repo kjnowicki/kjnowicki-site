@@ -11,13 +11,19 @@ html {
   width: 0.7vw;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.3);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.6);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: aqua;
+}
+::-webkit-scrollbar-track-piece:end {
+  background: rgba(255,255,255,0.3);
+}
+::-webkit-scrollbar-track-piece:start {
+  background: rgba(255,255,255,0.3);
 }
 
 #global-content {
@@ -61,6 +67,9 @@ html {
   font-size: min(2vh,2.5vw);
   color:black;
   transform-style: preserve-3d;
+}
+.nav-c tbody::-webkit-scrollbar-track-piece:end {
+  margin-bottom: 20px; 
 }
 .nav-c tbody, .nav-c thead, .nav-c tr {
   transform-style: preserve-3d;
