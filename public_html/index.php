@@ -20,7 +20,7 @@
 				<table class="nav-c">
 					<thead  onclick="rotate_carousel_on_click(this);">
 						<tr>
-							<th>My Apps 💿</th>
+							<th>💾 My Apps 💾</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -68,7 +68,7 @@
 				<table class="nav-c">
 					<thead onclick="rotate_carousel_on_click(this);">
 						<tr>
-							<th>Endorsments 💖</th>
+							<th>Endorsements</th>
 						</tr>
 					</thead>
 					<tbody>

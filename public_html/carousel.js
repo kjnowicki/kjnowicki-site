@@ -54,7 +54,7 @@ document.onmouseleave = () => {
 const rotating_carousel = (x) => {
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
-    let angle = current_angle - 180*relative_dif*0.3;
+    let angle = current_angle - 180*relative_dif*0.45;
     angle = Math.round(angle/6) * 6;
     if(Math.abs(angle - current_angle) < 6) return;
     clearTimeout(adjusting_timeout);
