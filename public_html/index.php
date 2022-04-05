@@ -26,7 +26,8 @@
 					<tbody>
 						<tr>
 							<td>
-								Ranker Party - Rating stuff along with other people in shared session.
+								<b>Ranker Party</b> - Rating stuff along with other people in shared session.<br>
+								<i>Currently unavailable for public use.</i>
 							</td>
 						</tr>
 						<tr>
@@ -45,7 +46,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<img src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/245415985_4344883805588789_8534260155616128479_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=kDw2CAW-zooAX8gUwWS&_nc_ht=scontent-vie1-1.xx&oh=00_AT_yU_ZIaY2r8fGYH2QXjVN_iJfs1yxmFUJPPK-ZWPVrhw&oe=6242A01C"/>
+								<img src="./Resources/images/CytProf.png"/>
 								<p>
 									A guy born in 1997 that grew to love programming and resolving problems with it.
 									I enjoy difficult puzzles that require a lot of thinking. I search for them everywhere. Arguebly the biggest one I didn't solve quite yet is life.
@@ -74,15 +75,24 @@
 					<tbody>
 						<tr>
 							<td>
-								I love everyone who is willing to make individual sacrifice for a common good. Thank you very much.
+								Love everyone's effort against wars and injustice in the world.
 							</td>
 						</tr>
 						<tr>
 							<td>
-								Small software that helps:<br>
-								- Notepad++<br>
-								- TurtoiseGit<br>
-								- PuTTY<br>
+								Must watch movies:
+								<ul>
+									<li><b>LaLa Land</b> - Amazingly written musical about dreams and love.</li>
+									<li><b>Jojo Rabit</b> - Brutal history contrasted with absurd humor. Perfect satire.</li>
+								</ul>
+							</td>
+						</tr>
+							<td>
+								YT Channels<br>
+								:Comedy:<br>
+								- <a href="https://www.youtube.com/c/MakingShorts">Joel Javer</a><br>
+								- <a href="https://www.youtube.com/c/VivaLaDirtLeague">Viva La Dirt League</a><br>
+								- <a href="https://www.youtube.com/c/GFDarwinyt">G.F. Darwin</a><br>
 							</td>
 						</tr>
 					</tbody>

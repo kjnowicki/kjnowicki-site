@@ -21,6 +21,7 @@ var click = false;
 var idle = true;
 var rotate_enabled = false;
 var previous_position = 0;
+var previous_position_y = 0;
 var currently_updating = false;
 var adjusting_timeout = null;
 var current_angle = 0;
@@ -39,10 +40,12 @@ const attach_carousel_listeners = () => {
     let el = document.getElementById("carousel");
     el.onmousedown = (e) => {
         previous_position = e.clientX;
+        previous_position_y = e.clientY;
         rotate_enabled = true;
     }
     el.ontouchstart = (e) => {
         previous_position = e.touches[0].clientX;
+        previous_position_y = e.touches[0].clientY;
         rotate_enabled = true;
     }
 }
@@ -54,11 +57,18 @@ document.onmouseup = () => {
     rotate_enabled = false;
 }
 
-const rotating_carousel = (x) => {
+const rotating_carousel = (touch) => {
+    let x = touch.clientX;
+    let y = touch.clientY;
     let carousel_el = document.querySelector("#carousel");
     let relative_dif = (previous_position - x) / window.innerWidth;
+    let relative_dif_y = (previous_position_y - y) / window.innerHeight;
     let angle = current_angle - 180*relative_dif*0.45;
     if(Math.abs(angle - current_angle) < 2) return;
+    if(Math.abs(relative_dif) < Math.abs(relative_dif_y)) {
+        rotate_enabled = false;
+        return;
+    }
     clearTimeout(adjusting_timeout);
     currently_updating = true;
     click = false;
@@ -67,6 +77,7 @@ const rotating_carousel = (x) => {
         carousel_el.style.transform = `rotateY(${angle}deg)`;
         current_angle = angle;
         previous_position = x;
+        previous_position_y = y;
         currently_updating = false;
         adjusting_timeout = setTimeout(() => {
             if(Math.abs(mod(angle + 11, 55) < 22 && !currently_updating)){
@@ -80,13 +91,13 @@ const rotating_carousel = (x) => {
 }
 document.onmousemove = (e) => {
     if(rotate_enabled && !currently_updating) {
-        rotating_carousel(e.clientX)
+        rotating_carousel(e)
     }
 }
 document.ontouchmove = (e) => {
     if(rotate_enabled && !currently_updating) {
         let touch =  (e.touches || e.changedTouches)[0];
-        rotating_carousel(touch.clientX)
+        rotating_carousel(touch)
     }
 }
 
