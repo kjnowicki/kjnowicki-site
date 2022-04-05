@@ -46,7 +46,7 @@
 					<tbody>
 						<tr>
 							<td>
-								<img src="/Resources/images/CytProf.png"/>
+								<img src="./Resources/images/CytProf.png"/>
 								<p>
 									A guy born in 1997 that grew to love programming and resolving problems with it.
 									I enjoy difficult puzzles that require a lot of thinking. I search for them everywhere. Arguebly the biggest one I didn't solve quite yet is life.
