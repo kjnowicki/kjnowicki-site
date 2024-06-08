@@ -2,20 +2,16 @@
 if (!isset($_SESSION['compare-rank_auth'])) $_SESSION['compare-rank_auth'] = false;
 if ($_SESSION['compare-rank_auth'] != true) {
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
-        // If no username provided, present the auth challenge.
-        header('WWW-Authenticate: Basic realm="My Website"');
+        header('WWW-Authenticate: Basic realm="kjnowicki"');
         header('HTTP/1.0 401 Unauthorized');
-        // User will be presented with the username/password prompt
-        // If they hit cancel, they will see this access denied message.
         echo '<p>Access denied. You did not enter a password.</p>';
-        exit; // Be safe and ensure no other content is returned.
+        exit;
     }
 
     $pass = $_SERVER['PHP_AUTH_PW'];
-    // If we get here, username was provided. Check password.
-    if (!(strlen($pass) > 4 && str_contains('compare-rank', $pass))) {
+    if ($_ENV['GV_PASS'] != $pass) {
         echo '<p>Access denied! You do not know the password.</p>';
-        header('WWW-Authenticate: Basic realm="My Website"');
+        header('WWW-Authenticate: Basic realm="kjnowicki"');
         header('HTTP/1.0 401 Unauthorized');
         exit;
     }

@@ -34,7 +34,7 @@
 		preg_match($exp, $_SERVER['REQUEST_URI'], $output_array);
 		switch ($app) {
 			case 'compare-rank':
-				if (strlen($pass) > 4 && str_contains($app, $pass)) {
+				if ($_ENV['GV_PASS'] != $pass) {
 					$_SESSION['pass_error'] = false;
 					$_SESSION[$app . "_auth"] = true;
 					header('Location: ' . $output_array[1] . $app);
