@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} kjnowicki\.pl
+RewriteRule ^(.*)$ https://www.kjnowicki.pl/$1 [R,L]

@@ -1,0 +1,32 @@
+global-footer {
+    color:lightblue;
+    font-size: min(1.5vh, 2.5vw);
+    text-align: center;
+    position: fixed;
+    bottom: 0%;
+    min-width: 100%;
+}
+global-footer #footer h2 {
+    user-select: none;
+    cursor: pointer;
+    color: lightgreen;
+    display: inline;
+    margin: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+global-footer #footer h2:first-child {
+    color: aqua;
+}
+global-footer #topics {
+    min-width: 100%;
+}
+global-footer a {
+    color: inherit;
+}
+global-footer span {
+    display: inline-block;
+}
+global-footer #author {
+    margin-bottom: 10px;
+}
